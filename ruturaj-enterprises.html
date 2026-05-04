@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruturaj Enterprises — Excellence Redefined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E8C0;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark-mid: #1A1A1A;
+    --dark-card: #141414;
+    --text-primary: #F0EAD6;
+    --text-secondary: #A89880;
+    --text-muted: #5A5040;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.2s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.4s ease, width 0.3s, height 0.3s, opacity 0.3s;
+    transform: translate(-50%, -50%);
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 60px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: var(--text-primary); }
+
+  .nav-links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    border: none;
+    padding: 12px 28px;
+    cursor: none;
+    transition: background 0.3s, letter-spacing 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold-light); letter-spacing: 3px; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
+      linear-gradient(135deg, #0A0A0A 0%, #111111 50%, #0D0D0D 100%);
+  }
+
+  /* Animated grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    animation: gridDrift 20s linear infinite;
+  }
+  @keyframes gridDrift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(80px, 80px); }
+  }
+
+  /* Large decorative R */
+  .hero-monogram {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-60%);
+    font-family: var(--serif);
+    font-size: 600px;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.06);
+    line-height: 1;
+    pointer-events: none;
+    animation: monogramFloat 8s ease-in-out infinite;
+  }
+  @keyframes monogramFloat {
+    0%, 100% { transform: translateY(-60%) rotate(0deg); }
+    50% { transform: translateY(-62%) rotate(1deg); }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+  .hero-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 500px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .btn-primary {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 18px 44px;
+    cursor: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-light);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-outline {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    cursor: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.3s, gap 0.3s;
+  }
+  .btn-outline::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+  .btn-outline:hover { color: var(--gold); gap: 18px; }
+  .btn-outline:hover::after { transform: translateX(4px); }
+
+  .hero-scroll {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+  .hero-scroll span {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.7); opacity: 0.4; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Stats band */
+  .stats-band {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: var(--dark-mid);
+    padding: 48px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-right: 1px solid rgba(201,168,76,0.08);
+    padding-right: 40px;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Section */
+  section { padding: 120px 60px; }
+
+  .section-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-tag::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    line-height: 2;
+    max-width: 520px;
+  }
+
+  /* About */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    background: var(--dark);
+  }
+  .about-visual {
+    position: relative;
+    height: 500px;
+  }
+  .about-block {
+    position: absolute;
+    background: var(--dark-card);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .about-block-1 { inset: 0 40px 40px 0; }
+  .about-block-2 {
+    width: 200px; height: 200px;
+    bottom: 0; right: 0;
+    background: var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .about-block-2 .num {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1;
+  }
+  .about-block-2 .lbl {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(10,10,10,0.6);
+  }
+  .about-inner-pattern {
+    position: absolute;
+    inset: 20px 60px 60px 20px;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(201,168,76,0.04) 0px,
+      rgba(201,168,76,0.04) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  }
+  .about-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.15);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* Services */
+  .services { background: var(--black); }
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--dark-card);
+    padding: 48px 40px;
+    border: 1px solid rgba(201,168,76,0.06);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, background 0.4s;
+    cursor: none;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at bottom left, rgba(201,168,76,0.04), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .service-card:hover { border-color: rgba(201,168,76,0.2); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover::after { opacity: 1; }
+
+  .service-number {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+    position: absolute;
+    top: 20px; right: 30px;
+    transition: color 0.4s;
+  }
+  .service-card:hover .service-number { color: rgba(201,168,76,0.15); }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .service-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+  .service-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .service-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+  }
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: gap 0.3s;
+  }
+  .service-link:hover { gap: 14px; }
+
+  /* Testimonial */
+  .testimonial-section {
+    background: var(--dark-mid);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 120px 160px;
+  }
+  .testimonial-section::before {
+    content: '"';
+    position: absolute;
+    top: -40px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: 400px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonial-text {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .testimonial-author {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .testimonial-author::before, .testimonial-author::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  /* Portfolio */
+  .portfolio { background: var(--black); }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 3px;
+    margin-top: 72px;
+  }
+  .portfolio-item {
+    background: var(--dark-card);
+    border: 1px solid rgba(201,168,76,0.06);
+    padding: 60px 48px;
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: none;
+    transition: border-color 0.4s;
+  }
+  .portfolio-item:hover { border-color: rgba(201,168,76,0.2); }
+  .portfolio-item:nth-child(1) { grid-column: span 2; }
+  .portfolio-item:nth-child(4) { grid-column: span 2; }
+
+  .portfolio-bg-shape {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%;
+    height: 100%;
+    opacity: 0.03;
+  }
+  .portfolio-category {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .portfolio-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .portfolio-detail {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 48px; }
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .contact-detail-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .contact-detail-value {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-primary);
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 0; }
+  .form-group {
+    position: relative;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    margin-bottom: 0;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-primary);
+    padding: 24px 0 16px;
+    cursor: none;
+    appearance: none;
+  }
+  .form-group textarea { resize: none; min-height: 80px; }
+  .form-group label {
+    position: absolute;
+    top: 24px; left: 0;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
+    pointer-events: none;
+  }
+  .form-group input:focus ~ label,
+  .form-group input:not(:placeholder-shown) ~ label,
+  .form-group textarea:focus ~ label,
+  .form-group textarea:not(:placeholder-shown) ~ label {
+    top: 6px;
+    font-size: 8px;
+    color: var(--gold);
+  }
+  .form-group::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+  .form-group:focus-within::after { transform: scaleX(1); }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: transparent; }
+
+  .form-submit {
+    margin-top: 48px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    border: none;
+    padding: 20px 48px;
+    cursor: none;
+    align-self: flex-start;
+    transition: background 0.3s, letter-spacing 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-light);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+  .form-submit:hover::before { transform: translateX(0); }
+  .form-submit span { position: relative; z-index: 1; }
+
+  /* Footer */
+  footer {
+    background: var(--dark-mid);
+    padding: 60px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+  .footer-logo em { font-style: italic; color: var(--text-secondary); }
+  .footer-copy {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+  }
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* Gold divider line */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section, .hero { padding: 80px 24px; }
+    .hero { padding-bottom: 60px; }
+    .stats-band { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
+    .about, .contact { grid-template-columns: 1fr; gap: 60px; }
+    .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item:nth-child(1), .portfolio-item:nth-child(4) { grid-column: span 1; }
+    footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
+    .services-header { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .testimonial-section { padding: 80px 32px; }
+    .hero-scroll { display: none; }
+    .hero-monogram { font-size: 300px; right: -20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Navigation -->
+<nav>
+  <a href="#" class="nav-logo">Ruturaj <span>Enterprises</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Enquire Now</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-monogram">R</div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Est. 2005 &nbsp;·&nbsp; Pune, India</div>
+    <h1 class="hero-title">
+      Where Vision<br>Meets <em>Excellence</em>
+    </h1>
+    <p class="hero-subtitle">
+      A legacy built on precision, integrity, and an unrelenting pursuit of the extraordinary. Ruturaj Enterprises delivers solutions that transcend the ordinary.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary"><span>Explore Our World</span></a>
+      <a href="#portfolio" class="btn-outline">View Portfolio</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- Stats Band -->
+<div class="stats-band">
+  <div class="stat-item">
+    <div class="stat-number">20+</div>
+    <div class="stat-label">Years of Excellence</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">500+</div>
+    <div class="stat-label">Projects Delivered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">18</div>
+    <div class="stat-label">Industry Sectors</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">99%</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-block about-block-1">
+      <div class="about-inner-pattern"></div>
+      <div class="about-inner-text">RE</div>
+    </div>
+    <div class="about-block about-block-2">
+      <div class="num">20</div>
+      <div class="lbl">Years Legacy</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-tag reveal">Our Story</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      Crafted with<br><em>Uncompromising</em><br>Standards
+    </h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="section-body reveal reveal-delay-2">
+      Founded in 2005, Ruturaj Enterprises has grown from a vision of excellence into one of India's most respected enterprise groups. We operate at the intersection of innovation and tradition — delivering outcomes that define industries.
+    </p>
+    <p class="section-body reveal reveal-delay-3" style="margin-top: 20px;">
+      Every engagement we undertake is approached with the same relentless attention to detail and craftsmanship that has made us a byword for quality among India's leading corporations.
+    </p>
+    <a href="#contact" class="btn-outline reveal reveal-delay-4" style="margin-top: 40px; color: var(--gold);">Meet Our Leadership</a>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag reveal">What We Do</div>
+      <h2 class="section-title reveal reveal-delay-1">Our <em>Core</em><br>Competencies</h2>
+    </div>
+    <p class="section-body reveal reveal-delay-2" style="max-width: 320px;">
+      Six pillars of expertise, each refined over two decades of uninterrupted delivery.
+    </p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M12 10v11M16 10v11"/></svg>
+      </div>
+      <div class="service-title">Strategic Infrastructure</div>
+      <p class="service-desc">End-to-end infrastructure development with a focus on longevity, regulatory compliance, and architectural precision.</p>
+      <a href="#" class="service-link">Explore ›</a>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-number">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="service-title">Trade & Commodities</div>
+      <p class="service-desc">Premium sourcing, logistics management, and international trade facilitation across high-value commodity sectors.</p>
+      <a href="#" class="service-link">Explore ›</a>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-number">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="service-title">Investment Advisory</div>
+      <p class="service-desc">Bespoke financial strategy, portfolio structuring, and capital growth advisory for institutional and private clients.</p>
+      <a href="#" class="service-link">Explore ›</a>
+    </div>
+
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-number">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="service-title">Project Management</div>
+      <p class="service-desc">Full-lifecycle project oversight combining agile methodologies with deep domain expertise and stakeholder alignment.</p>
+      <a href="#" class="service-link">Explore ›</a>
+    </div>
+
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-number">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="service-title">Technology Solutions</div>
+      <p class="service-desc">Digital transformation, enterprise software integration, and bespoke technology solutions for complex business challenges.</p>
+      <a href="#" class="service-link">Explore ›</a>
+    </div>
+
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-number">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="service-title">Human Capital</div>
+      <p class="service-desc">Executive search, leadership development, and talent architecture for high-performance organisations across India.</p>
+      <a href="#" class="service-link">Explore ›</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Testimonial -->
+<div class="testimonial-section">
+  <blockquote class="testimonial-text reveal">
+    "Ruturaj Enterprises brought a level of sophistication and commitment to our project that I had not encountered elsewhere. They are, without question, in a class of their own."
+  </blockquote>
+  <div class="testimonial-author reveal reveal-delay-1">Vikram Mehta — Chairman, Horizon Group</div>
+</div>
+
+<!-- Portfolio -->
+<section class="portfolio" id="portfolio">
+  <div class="section-tag reveal">Selected Work</div>
+  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 0;">Projects of <em>Distinction</em></h2>
+    <a href="#" class="btn-outline reveal reveal-delay-2" style="color: var(--text-secondary); margin-bottom: 6px;">View All ›</a>
+  </div>
+  <div class="portfolio-grid">
+
+    <div class="portfolio-item reveal">
+      <svg class="portfolio-bg-shape" viewBox="0 0 300 400" fill="none">
+        <circle cx="200" cy="200" r="160" stroke="white" stroke-width="0.5"/>
+        <circle cx="200" cy="200" r="100" stroke="white" stroke-width="0.5"/>
+      </svg>
+      <div class="portfolio-category">Infrastructure · 2023</div>
+      <div class="portfolio-name">Ashtavinayak Commercial Tower</div>
+      <div class="portfolio-detail">Pune, Maharashtra &nbsp;|&nbsp; ₹480 Cr. Project Value</div>
+    </div>
+
+    <div class="portfolio-item reveal reveal-delay-1">
+      <div class="portfolio-category">Energy · 2022</div>
+      <div class="portfolio-name">Renewable Grid Initiative</div>
+      <div class="portfolio-detail">Karnataka &nbsp;|&nbsp; 120 MW Capacity</div>
+    </div>
+
+    <div class="portfolio-item reveal reveal-delay-2">
+      <div class="portfolio-category">Technology · 2024</div>
+      <div class="portfolio-name">Enterprise ERP Transformation</div>
+      <div class="portfolio-detail">National Rollout &nbsp;|&nbsp; 14 Cities</div>
+    </div>
+
+    <div class="portfolio-item reveal reveal-delay-3">
+      <svg class="portfolio-bg-shape" viewBox="0 0 300 400" fill="none">
+        <rect x="60" y="60" width="200" height="280" stroke="white" stroke-width="0.5"/>
+        <rect x="90" y="90" width="140" height="220" stroke="white" stroke-width="0.5"/>
+      </svg>
+      <div class="portfolio-category">Trade · 2023</div>
+      <div class="portfolio-name">South Asian Commodities Corridor</div>
+      <div class="portfolio-detail">India · Sri Lanka · Bangladesh &nbsp;|&nbsp; ₹200 Cr. Annual Throughput</div>
+    </div>
+
+    <div class="portfolio-item reveal reveal-delay-4">
+      <div class="portfolio-category">Advisory · 2024</div>
+      <div class="portfolio-name">Institutional Capital Restructuring</div>
+      <div class="portfolio-detail">Private Equity &nbsp;|&nbsp; ₹1,200 Cr. AUM</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div>
+      <div class="section-tag reveal">Get In Touch</div>
+      <h2 class="section-title reveal reveal-delay-1">Begin Your<br><em>Journey</em><br>With Us</h2>
+      <div class="divider reveal reveal-delay-2"></div>
+      <p class="section-body reveal reveal-delay-2">
+        We engage with a select number of clients each year to ensure every partnership receives the full weight of our expertise and attention.
+      </p>
+    </div>
+    <div class="contact-detail reveal reveal-delay-3">
+      <div class="contact-detail-label">Headquarters</div>
+      <div class="contact-detail-value">Baner Road, Pune 411045<br>Maharashtra, India</div>
+    </div>
+    <div class="contact-detail reveal reveal-delay-3">
+      <div class="contact-detail-label">Email</div>
+      <div class="contact-detail-value">hello@ruturajenterprises.in</div>
+    </div>
+    <div class="contact-detail reveal reveal-delay-4">
+      <div class="contact-detail-label">Direct Line</div>
+      <div class="contact-detail-value">+91 20 4890 7200</div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal reveal-delay-2">
+    <div class="form-group">
+      <input type="text" id="name" placeholder="Name" autocomplete="off">
+      <label for="name">Full Name</label>
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Email" autocomplete="off">
+      <label for="email">Email Address</label>
+    </div>
+    <div class="form-group">
+      <input type="text" id="company" placeholder="Company" autocomplete="off">
+      <label for="company">Company / Organisation</label>
+    </div>
+    <div class="form-group">
+      <textarea id="message" placeholder="Message" rows="4"></textarea>
+      <label for="message">Your Message</label>
+    </div>
+    <button class="form-submit"><span>Send Enquiry</span></button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Ruturaj <em>Enterprises</em></div>
+  <div class="footer-copy">© 2024 Ruturaj Enterprises Pvt. Ltd. All rights reserved.</div>
+  <ul class="footer-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="#">Careers</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .service-card, .portfolio-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1.8)';
+      ring.style.width = '56px'; ring.style.height = '56px';
+      ring.style.borderColor = 'rgba(201,168,76,0.6)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      ring.style.width = '36px'; ring.style.height = '36px';
+      ring.style.borderColor = 'rgba(201,168,76,0.4)';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(10,10,10,0.97)';
+      nav.style.backdropFilter = 'blur(12px)';
+      nav.style.padding = '18px 60px';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(10,10,10,0.95), transparent)';
+      nav.style.backdropFilter = 'blur(2px)';
+      nav.style.padding = '28px 60px';
+    }
+  });
+
+  // Smooth mobile nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
